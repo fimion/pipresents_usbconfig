@@ -22,3 +22,18 @@ sudo pip install pexpect
 
 # and for good measure, make sure git is installed
 sudo apt-get install git
+
+# Actually go get pipresents and put it in /home/pi/pipresents
+git clone https://github.com/KenT2/pipresents-gapless.git /home/pi/pipresents
+
+# copy our liveshow profile over to the correct place
+cp pipresents_usbconfig /home/pi/pp_home/pp_profiles/pipresents_usbconfig
+
+# change our autostart file
+mv /home/pi/.config/lxsession/LXDE-pi/autostart /home/pi/config/lxsession/LXDE-pi/autostart.old
+cat <<EOF > /home/pi/.config/lxsession/LXDE-pi/autostart
+@xset s noblank
+@xset s off
+@xset -dpms
+/usr/bin/python /home/pi/pipresents/pipresents.py -f -o /home/pi -p pipresents_usbconfig
+EOF
