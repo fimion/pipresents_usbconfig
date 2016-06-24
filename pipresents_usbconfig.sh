@@ -41,7 +41,7 @@ echo "Make dir pp_home/pp_profiles/..."
 mkdir /home/pi/pp_home
 mkdir /home/pi/pp_home/pp_profiles
 echo "Copy pipresents_usbconfig to pp_profiles..."
-cp pipresents_usbconfig /home/pi/pp_home/pp_profiles/pipresents_usbconfig
+cp -r pipresents_usbconfig /home/pi/pp_home/pp_profiles/pipresents_usbconfig
 
 # change our autostart file
 echo "Backup autostart to autostart.old..."
